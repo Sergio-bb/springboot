@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af1bf33-bbb7-45ec-b866-05ef000a1a9f" name="Changes" comment="add micoroservice usuarios">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/models/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/contract/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/implementation/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mscv.usuarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +35,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -141,11 +131,6 @@
           <url>file://$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java</url>
           <line>52</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
