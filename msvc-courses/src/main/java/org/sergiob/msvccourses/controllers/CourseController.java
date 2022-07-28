@@ -1,5 +1,7 @@
 package org.sergiob.msvccourses.controllers;
 
+import feign.FeignException;
+import org.sergiob.msvccourses.models.User;
 import org.sergiob.msvccourses.models.entities.Course;
 
 import org.sergiob.msvccourses.services.contract.ICourseService;
@@ -10,10 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class CourseController {
@@ -64,6 +63,55 @@ public class CourseController {
         if (courseDb.isPresent()){
             _service.delete(id);
             return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("asingnStudent/{courseId}")
+    public ResponseEntity<?> asingnUser(@RequestBody User user,@PathVariable Long courseId){
+        Optional<User> optionalUser;
+        try {
+            optionalUser =  _service.asingnUser(user, courseId);
+        }catch (FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body((Collections.singletonMap("message", "user not exist or has error" +
+                            " there is an error in communication. ")));
+        }
+
+        if(optionalUser.isPresent()){
+            return ResponseEntity.status(HttpStatus.CREATED).body(optionalUser.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @PostMapping("createUser/{courseId}")
+    public ResponseEntity<?> createUser(@RequestBody User user,@PathVariable Long courseId){
+        Optional<User> optionalUser;
+        try {
+            optionalUser =  _service.createUser(user, courseId);
+        }catch (FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body((Collections.singletonMap("message", "Error creating user or" +
+                            " there is an error in communication. ")));
+        }
+
+        if(optionalUser.isPresent()){
+            return ResponseEntity.status(HttpStatus.CREATED).body(optionalUser.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping("unasingnStudent/{courseId}")
+    public ResponseEntity<?> unasingnStudent(@RequestBody User user,@PathVariable Long courseId){
+        Optional<User> optionalUser;
+        try {
+            optionalUser =  _service.unasingnUser(user, courseId);
+        }catch (FeignException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body((Collections.singletonMap("message", "user not exist or" +
+                            " there is an error in communication. ")));
+        }
+
+        if(optionalUser.isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).body(optionalUser.get());
         }
         return ResponseEntity.notFound().build();
     }

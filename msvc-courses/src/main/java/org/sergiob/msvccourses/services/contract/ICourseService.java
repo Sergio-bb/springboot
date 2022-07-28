@@ -1,5 +1,6 @@
 package org.sergiob.msvccourses.services.contract;
 
+import org.sergiob.msvccourses.models.User;
 import org.sergiob.msvccourses.models.entities.Course;
 import org.sergiob.msvccourses.services.implementation.CourseService;
 
@@ -11,4 +12,8 @@ public interface ICourseService {
     Optional<Course> getById(Long id);
     Course add(Course course);
     void delete(Long id);
+
+    Optional<User> asingnUser(User user, Long courseId);
+    Optional<User> createUser(User user, Long courseId);
+    Optional<User> unasingnUser(User user, Long courseId);
 }
