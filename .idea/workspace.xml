@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af1bf33-bbb7-45ec-b866-05ef000a1a9f" name="Changes" comment="add micoroservice usuarios">
+      <change afterPath="$PROJECT_DIR$/msvc-courses/src/main/java/org/sergiob/msvccourses/controllers/CourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/msvc-courses/src/main/java/org/sergiob/msvccourses/models/entities/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/msvc-courses/src/main/java/org/sergiob/msvccourses/repositories/CourseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/msvc-courses/src/main/java/org/sergiob/msvccourses/services/contract/ICourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/msvc-courses/src/main/java/org/sergiob/msvccourses/services/implementation/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/models/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/models/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/contract/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/contract/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/implementation/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/services/implementation/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msvc-courses/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/msvc-courses/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/msvc-courses/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msvc-courses/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/msvc-courses/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +76,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.sergiob.mscv.usuarios.mscv.usuarios.Application" />
       <module name="mscv.usuarios" />
@@ -73,9 +90,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MsvcCoursesApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.sergiob.msvccourses.MsvcCoursesApplication" />
+      <module name="msvc-courses" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.sergiob.msvccourses.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.MsvcCoursesApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +160,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/mscv.usuarios/src/main/java/org/sergiob/mscv/usuarios/mscv/usuarios/controllers/UserController.java</url>
-          <line>52</line>
+          <line>69</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

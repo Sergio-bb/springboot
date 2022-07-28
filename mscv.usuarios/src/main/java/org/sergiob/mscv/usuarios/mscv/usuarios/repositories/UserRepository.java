@@ -3,5 +3,8 @@ package org.sergiob.mscv.usuarios.mscv.usuarios.repositories;
 import org.sergiob.mscv.usuarios.mscv.usuarios.models.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
+
 public interface UserRepository extends CrudRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }

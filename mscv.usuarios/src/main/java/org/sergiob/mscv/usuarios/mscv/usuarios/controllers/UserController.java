@@ -1,14 +1,16 @@
 package org.sergiob.mscv.usuarios.mscv.usuarios.controllers;
 
+import net.bytebuddy.implementation.bind.annotation.BindingPriority;
 import org.sergiob.mscv.usuarios.mscv.usuarios.models.entities.User;
 import org.sergiob.mscv.usuarios.mscv.usuarios.services.contract.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import javax.validation.Valid;
+import java.util.*;
 
 @RestController
 public class UserController {
@@ -16,9 +18,16 @@ public class UserController {
     private IUserService _service;
 
     @PostMapping("/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User add(@RequestBody User user){
-        return _service.add(user);
+    public ResponseEntity<?> add(@Valid @RequestBody User user, BindingResult result){
+        if(result.hasErrors()){
+            return validate(result);
+        }
+        if(_service.findByEmail(user.getEmail()).isPresent()){
+            return ResponseEntity.badRequest()
+                    .body(Collections.
+                            singletonMap("message", "the email is used"));
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(_service.add(user));
     }
 
     @GetMapping("/getall")
@@ -37,16 +46,24 @@ public class UserController {
     }
 
     @PutMapping("update/{id}")
-    public ResponseEntity<?> update(@RequestBody User user, @PathVariable Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody User user,BindingResult result, @PathVariable Long id){
+        if(result.hasErrors()){
+            return validate(result);
+        }
+
         Optional<User> optionalUser = _service.getById(id);
         if(optionalUser.isPresent()){
             User userDb = optionalUser.get();
+            if(!user.getEmail().equalsIgnoreCase(userDb.getEmail()) && _service.findByEmail(user.getEmail()).isPresent()){
+                return ResponseEntity.badRequest().body(Collections.singletonMap("message", "the email is used"));
+            }
             userDb.setEmail(user.getEmail());
             userDb.setName(user.getName());
             userDb.setPassword(user.getPassword());
             return ResponseEntity.status(HttpStatus.CREATED).body(_service.add(userDb));
         }
-        return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
+
     }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
@@ -56,5 +73,12 @@ public class UserController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+    private ResponseEntity<Map<String, String>> validate(BindingResult result) {
+        Map<String, String> errors = new HashMap<>();
+        result.getFieldErrors().forEach(error ->{
+            errors.put(error.getField(), String.format("el campo %s %s", error.getField(),error.getDefaultMessage()));
+        });
+        return ResponseEntity.badRequest().body(errors);
     }
 }

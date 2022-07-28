@@ -16,6 +16,10 @@
     <modules>
         <module>
             mscv.usuarios
+
+        </module>
+        <module>
+            msvc-courses
         </module>
     </modules>
     <properties>

@@ -1,6 +1,9 @@
 package org.sergiob.mscv.usuarios.mscv.usuarios.models.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="users")
@@ -8,7 +11,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotEmpty
+    @Email
     @Column(unique = true)
     private String email;
 
@@ -20,6 +26,7 @@ public class User {
         this.password = password;
     }
 
+    @NotBlank
     private String password;
 
     public Long getId() {
