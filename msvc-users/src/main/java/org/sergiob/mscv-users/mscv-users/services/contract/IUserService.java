@@ -11,4 +11,5 @@ public interface IUserService {
     User add(User user);
     void delete(Long id);
     Optional<User> findByEmail(String email);
+    List<User> findByIds(List<Long> ids);
 }

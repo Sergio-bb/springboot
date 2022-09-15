@@ -1,6 +1,5 @@
 package org.sergiob.mscv.usuarios.mscv.usuarios.controllers;
 
-import net.bytebuddy.implementation.bind.annotation.BindingPriority;
 import org.sergiob.mscv.usuarios.mscv.usuarios.models.entities.User;
 import org.sergiob.mscv.usuarios.mscv.usuarios.services.contract.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class UserController {
     public List<User> getAll(){
         return _service.getAll();
     }
-    @GetMapping("get/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         if(id!= null){
             Optional<User> optional = _service.getById(id);
@@ -45,7 +44,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody User user,BindingResult result, @PathVariable Long id){
         if(result.hasErrors()){
             return validate(result);
@@ -65,7 +64,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
 
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         Optional<User> userDb = _service.getById(id);
         if (userDb.isPresent()){
@@ -73,6 +72,11 @@ public class UserController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/findUsersById")
+    public ResponseEntity<?> findStudensById(@RequestParam List<Long> ids){
+        return ResponseEntity.ok(_service.findByIds(ids));
     }
     private ResponseEntity<Map<String, String>> validate(BindingResult result) {
         Map<String, String> errors = new HashMap<>();

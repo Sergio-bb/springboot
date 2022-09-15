@@ -8,9 +8,9 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>org.sergiob.mscv.usuarios</groupId>
-	<artifactId>mscv.usuarios</artifactId>
+	<artifactId>mscv-users</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mscv.usuarios</name>
+	<name>msvc-users</name>
 	<description>Micro service for users</description>
 	<properties>
 		<java.version>17</java.version>

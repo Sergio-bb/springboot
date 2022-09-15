@@ -2,6 +2,7 @@ package org.sergiob.mscv.usuarios.mscv.usuarios.services.implementation;
 
 import org.sergiob.mscv.usuarios.mscv.usuarios.models.entities.User;
 import org.sergiob.mscv.usuarios.mscv.usuarios.repositories.UserRepository;
+import org.sergiob.mscv.usuarios.mscv.usuarios.rest.ICourseClient;
 import org.sergiob.mscv.usuarios.mscv.usuarios.services.contract.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class UserService implements IUserService {
     @Autowired
     private UserRepository _repository;
+
+    @Autowired
+    private ICourseClient _client;
 
     @Override
     @Transactional()
@@ -37,10 +41,16 @@ public class UserService implements IUserService {
     @Override
     public void delete(Long id) {
         _repository.deleteById(id);
+        _client.deleteStudent(id);
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
         return _repository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> findByIds(List<Long> ids) {
+        return (List<User>) _repository.findAllById(ids);
     }
 }

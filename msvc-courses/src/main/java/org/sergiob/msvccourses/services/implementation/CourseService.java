@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseService implements ICourseService {
@@ -33,6 +34,22 @@ public class CourseService implements ICourseService {
     }
 
     @Override
+    @Transactional()
+    public Optional<Course> getByIdWhitUsers(Long id) {
+        Optional<Course> optional = _courseRepository.findById(id);
+        if(optional.isPresent()){
+            Course course = optional.get();
+            if(!course.getStudents().isEmpty()){
+                List<Long> ids = course.getStudents().stream().map(Student::getUserId).toList();
+                List<User> users = _userClient.findUsersByIds(ids);
+                course.setUsers(users);
+            }
+            return Optional.of(course);
+        }
+        return Optional.empty();
+    }
+
+    @Override
     @Transactional
     public Course add(Course course) {
         return _courseRepository.save(course);
@@ -42,6 +59,12 @@ public class CourseService implements ICourseService {
     @Transactional
     public void delete(Long id) {
         _courseRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudentById(Long id) {
+        _courseRepository.deleteStudentById(id);
     }
 
     @Override

@@ -67,6 +67,8 @@ public class CourseController {
         return ResponseEntity.notFound().build();
     }
 
+
+
     @PutMapping("asingnStudent/{courseId}")
     public ResponseEntity<?> asingnUser(@RequestBody User user,@PathVariable Long courseId){
         Optional<User> optionalUser;
@@ -90,7 +92,7 @@ public class CourseController {
             optionalUser =  _service.createUser(user, courseId);
         }catch (FeignException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body((Collections.singletonMap("message", "Error creating user or" +
+                    .body((Collections.singletonMap("messageError", "Error creating user or" +
                             " there is an error in communication. ")));
         }
 
@@ -106,12 +108,35 @@ public class CourseController {
             optionalUser =  _service.unasingnUser(user, courseId);
         }catch (FeignException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body((Collections.singletonMap("message", "user not exist or" +
+                    .body((Collections.singletonMap("messageError", "user not exist or" +
                             " there is an error in communication. ")));
         }
 
         if(optionalUser.isPresent()){
             return ResponseEntity.status(HttpStatus.OK).body(optionalUser.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping("/deleteStudent/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable Long id){
+        _service.deleteStudentById(id);
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/getByIdWhitStudents/{id}")
+    public  ResponseEntity<?> getByIdWhitStudents(@PathVariable Long id){
+        if(id!= null){
+            try {
+                Optional<Course> optional = _service.getByIdWhitUsers(id);
+                if (optional.isPresent()){
+                    return ResponseEntity.ok(optional.get());
+                }else {
+                    return ResponseEntity.notFound().build();
+                }
+            }catch (FeignException e){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body((Collections.singletonMap("messageError", "Error in communication.")));
+            }
+
         }
         return ResponseEntity.notFound().build();
     }
